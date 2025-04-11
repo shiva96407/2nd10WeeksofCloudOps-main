@@ -8,7 +8,7 @@ terraform {
 
   backend "s3" {
     bucket = "werty098"
-    key    = "eks/terraform.tfstate"
+    key    = "eggks/terraform.tfstate"
     region = "ap-south-1"
   }
 
