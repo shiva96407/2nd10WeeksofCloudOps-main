@@ -22,21 +22,17 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/shiva96407/2nd10WeeksofCloudOps-main.git'
             }
         }
-        stage('Sonarqube Analysis') {
-    steps {
-        dir('client') {
-            withSonarQubeEnv('sonar-server') {
-                sh ''' 
-                    sonar-scanner \
-                      -Dsonar.projectKey=three-tier-frontend \
-                      -Dsonar.sources=. \
-                      -Dsonar.host.url=http://13.127.255.23:9000 \
-                      -Dsonar.login=squ_77be463237f474314c4414af7f18e9250fd17d17
-                '''
+           stage('Sonarqube Analysis') {
+            steps {
+                dir('client') {
+                    withSonarQubeEnv('sonar-server') {
+                        sh ''' $SCANNER_HOME/bin/sonar-scanner \
+                        -Dsonar.projectName=three-tier-frontend \
+                        -Dsonar.projectKey=three-tier-frontend '''
+                    }
+                }
             }
         }
-    }
-}
 
         stage('Quality Check') {
             steps {
