@@ -77,10 +77,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/shiva96407/2nd10WeeksofCloudOps-main.git'
             }
         }
-        stage('Update Deployment file') {
-            environment {
-                GIT_REPO_NAME = "2nd10WeeksofCloudOps-main"
-                GIT_USER_NAME = "shiva96407"
+        
             }
             steps {
                 dir('kubernetes-files') {
